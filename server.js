@@ -5,7 +5,6 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
-const router = express.Router();
 
 mongoose.connect('mongodb://someuser:pst101@ds145921.mlab.com:45921/fromherecrudtest',
  {
@@ -33,12 +32,13 @@ app.get('/', (req, res) => {
   }
 );
 
-app.post('/', (req, res, next) => {
-  if (req.body.name != req.session.trueName) {
+app.post('/', (req, res) => {
+  if (req.body.name !== req.session.trueName) {
     res.sendFile(path.join(__dirname, './form2.html'));
   } else {
-    res.redirect('/index')
-  };
+      res.locals.userName = req.body.name;
+      res.render('index.ejs');
+  }
 });
 
 app.get('/index', (req, res) => {
