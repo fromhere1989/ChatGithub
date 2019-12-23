@@ -28,6 +28,11 @@ findUser = (req, res) => {
             .status(404)
             .json({ success: false, error: `User not found` })
     }
+    if (req.body.password !== user.password) {
+      return res
+          .status(401)
+          .json({ success: false, error: `invalid password` })
+    }
     req.session.userName = user.name;
     return res.status(200).redirect('/index')
 }).catch(err => console.log(err))
