@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/', Controllers.getLogin);
 router.get('/auth', Controllers.getAuth)
-router.get('/index', Controllers.getIndex);
+router.get('/chat', Controllers.getChat);
 router.post('/', Controllers.findUser);
 router.post('/auth', Controllers.saveUser);
 

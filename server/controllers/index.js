@@ -1,7 +1,6 @@
 const User = require('../models/User');
 const path = require('path');
 
-
 const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
@@ -16,6 +15,10 @@ getAuth = (req, res) => {
 
 getIndex = (req, res) => {
   res.render('./index.ejs', { userName: req.session.userName });
+};
+
+getChat = (req, res) => {
+    res.render('./chat.ejs', { userName: req.session.userName });
 };
 
 findUser = (req, res) => {
@@ -34,7 +37,7 @@ findUser = (req, res) => {
           .json({ success: false, error: `invalid password` })
     }
     req.session.userName = user.name;
-    return res.status(200).redirect('/index')
+    return res.status(200).redirect('/chat')
 }).catch(err => console.log(err))
 };
 
@@ -48,12 +51,13 @@ saveUser = (req, res) => {
   };
   user.save();
   req.session.userName = user.name;
-  return res.status(200).redirect('/index')
+  return res.status(200).redirect('/chat')
 };
 
 module.exports = {
   getLogin,
   getAuth,
+  getChat,
   findUser,
   saveUser,
   getIndex,
