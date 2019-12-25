@@ -1,5 +1,6 @@
 const User = require('../models/User');
 const path = require('path');
+const Bcrypt = require('bcryptjs');
 
 const mongoose = require('mongoose');
 const express = require('express');
@@ -31,7 +32,9 @@ findUser = (req, res) => {
             .status(404)
             .json({ success: false, error: `User not found` })
     }
-    if (req.body.password !== user.password) {
+    let password = req.body.password;
+    const isPasswordMatch = Bcrypt.compare(password, user.password);
+    if (!isPasswordMatch) {
       return res
           .status(401)
           .json({ success: false, error: `invalid password` })
@@ -42,6 +45,7 @@ findUser = (req, res) => {
 };
 
 saveUser = (req, res) => {
+  req.body.password = Bcrypt.hashSync(req.body.password, 10);
   const user = new User(req.body)
   if (req.body.password.length < 6) {
     return res.status(400).json({
