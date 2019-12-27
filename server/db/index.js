@@ -16,9 +16,10 @@ const initDb = function (app) {
 
     app.use(
         session({
-            secret: 'you secret key',
+            secret: 'Irtish',
+            key: 'express.sid',
             resave: true,
-            saveUninitialized: true,
+            saveUninitialized: false,
             store: new MongoStore({mongooseConnection: mongoose.connection})
         })
     );
