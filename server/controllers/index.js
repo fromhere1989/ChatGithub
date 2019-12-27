@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const path = require('path');
 const Bcrypt = require('bcryptjs');
+const validator = require('validator');
 
 const mongoose = require('mongoose');
 const express = require('express');
@@ -40,22 +41,28 @@ findUser = (req, res) => {
           .json({ success: false, error: `invalid password` })
     }
     req.session.userName = user.name;
-    return res.status(200).redirect('/chat')
+    return res.status(200).redirect(`/chat/${user.name}`)
 }).catch(err => console.log(err))
 };
 
 saveUser = (req, res) => {
-  req.body.password = Bcrypt.hashSync(req.body.password, 10);
-  const user = new User(req.body)
   if (req.body.password.length < 6) {
     return res.status(400).json({
             success: false,
             error: 'minlength in password - 6 symbols',
         });
+  }
+  if (!validator.isEmail(req.body.email)) {
+    return res.status(400).json({
+            success: false,
+            error: 'Invalid email adress',
+        });
   };
+  req.body.password = Bcrypt.hashSync(req.body.password, 10);
+  const user = new User(req.body);
   user.save();
   req.session.userName = user.name;
-  return res.status(200).redirect('/chat')
+  return res.status(200).redirect(`/chat/${user.name}`)
 };
 
 module.exports = {
