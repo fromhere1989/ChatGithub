@@ -4,8 +4,10 @@ const router = express.Router();
 
 router.get('/', Controllers.getLogin);
 router.get('/auth', Controllers.getAuth)
-router.get('/chat/:userName', Controllers.getChat);
+router.get('/chat', Controllers.getChat);
 router.post('/', Controllers.findUser);
 router.post('/auth', Controllers.saveUser);
+router.post('/logout', Controllers.logout);
+router.post('/logoutAll', Controllers.logoutAll);
 
 module.exports = router;

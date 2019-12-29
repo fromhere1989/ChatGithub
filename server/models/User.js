@@ -16,7 +16,13 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true,
     minlength: 6,
-  }
+  },
+  tokens: [{
+    token: {
+      type: String,
+      required: true
+    }
+ }]
 });
 
 const User = mongoose.model('User', userSchema);

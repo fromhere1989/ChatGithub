@@ -22,8 +22,21 @@ body {
   " menu middle chat ";
 }
 
+@media screen and (max-width: 800px) {
+	.main {
+		display: flex;
+		flex-direction: column;
+	}
+}
+
 .menu {
   grid-area: menu;
+}
+
+@media screen and (max-width: 800px) {
+	.menu {
+	  display: none;
+	}
 }
 
 .middle {
@@ -34,19 +47,29 @@ body {
   justify-content: space-between;
 }
 
+@media screen and (max-width: 800px) {
+	.middle {
+		margin: 10px 30px;
+	}
+}
+
 .user {
-  height: 90px;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-
 }
 
 .video {
   height: 80%;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
-
 }
+
+@media screen and (max-width: 800px) {
+	.video {
+		display: none;
+	}
+}
+
 
 .chat {
   grid-area: chat;
@@ -55,6 +78,13 @@ body {
   margin: 50px 30px;
   border-radius: 10px;
   background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width: 800px) {
+	.chat {
+		min-height: 550px;
+		margin: 10px 30px;
+	}
 }
 
 .chat__name {
@@ -69,10 +99,22 @@ body {
   border-bottom: 1px solid white;
 }
 
+@media screen and (max-width: 800px) {
+	.chat__window {
+		height: 400px;
+	}
+}
+
 .chat__input {
   display: flex;
   flex-direction: row;
   height: 120px;
+}
+
+@media screen and (max-width: 800px) {
+	.chat__input {
+		height: 150px;
+	}
 }
 
 .input {

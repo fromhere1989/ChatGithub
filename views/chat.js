@@ -1,4 +1,7 @@
-const socket = io.connect('http://localhost:8080');
+const token = ((document.cookie).split('='))[1];
+const socket = io.connect('http://localhost:8080', {
+  query: {token: token}
+});
 
 //отсылает обратно пользователю username
 socket.on('userName', userName => {
@@ -32,10 +35,15 @@ socket.on('newUser', userName => {
     };
   });
 
+  document.querySelector('.logout__button').onclick = () => {
+  let message = `userName disconnected`;
+  socket.emit('logout');
+};
+
 socket.on('messageToClients', (msg, name) => {
   let newMessage = document.createElement('p');
   newMessage.className = 'newMes';
   newMessage.innerHTML = name + ' : ' + msg + '\n';
 
   document.querySelector('.chat__window').append(newMessage);
-})
+});
