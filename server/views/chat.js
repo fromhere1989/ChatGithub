@@ -32,11 +32,10 @@ socket.on('newUser', userName => {
   input.addEventListener('keyup', event => {
     if (event.keyCode === 13) {
       document.querySelector('.button').click()
-    };
+    }
   });
 
   document.querySelector('.logout__button').onclick = () => {
-  let message = `userName disconnected`;
   socket.emit('logout');
 };
 
