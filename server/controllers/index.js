@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const logError = err => console.log(err);
 
 getLogin = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/form.html'))
+    res.sendFile(path.join(__dirname, '../../views/form.html'))
 };
 
 logout = (req, res) => {
@@ -48,10 +48,11 @@ logoutAll = (req, res) => {
 };
 
 getAuth = (req, res) => {
-    res.sendFile(path.join(__dirname, '../views/auth.html'))
+    res.sendFile(path.join(__dirname, '../../views/auth.html'))
 };
 
 getChat = (req, res) => {
+    console.log('2 ' + req.session.userName);
     res.cookie('query', req.session.token);
     res.render('./chat.ejs', {userName: req.session.userName});
 };
@@ -109,12 +110,13 @@ saveUser = (req, res) => {
     }
     req.body.password = Bcrypt.hashSync(req.body.password, 10);
     const user = new User(req.body);
-    const token = jwt.sign({_id: user._id}, 'Irtish');
+    const token = jwt.sign({_id: user._id, userName: user.name}, 'Irtish');
     user.tokens = user.tokens.concat({token});
     req.session.userName = user.name;
     req.session.token = token;
-    user.save(() => res.status(200).redirect(`/chat`))
-        .catch(logError);
+    console.log('1 ' + req.session.userName);
+    user.save();
+    return res.status(200).redirect(`/chat`);
 };
 
 module.exports = {

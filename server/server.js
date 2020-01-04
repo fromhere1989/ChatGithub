@@ -1,3 +1,4 @@
+
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -25,8 +26,8 @@ const authMiddleware = function (socket, next) {
     if (!hasToken) {
         next(new Error('Authentication error'));
     }
-    const {id, userName} = jwt.verify(socket.handshake.query.token, 'Irtish');
-    socket.userId = id;
+    const {_id, userName} = jwt.verify(socket.handshake.query.token, 'Irtish');
+    socket.userId = _id;
     socket.userName = userName;
     next();
 };
