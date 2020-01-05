@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 const logError = err => console.log(err);
 
 getLogin = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../views/form.html'))
+    res.sendFile(path.join(__dirname, '../../views/login.html'))
 };
 
 logout = (req, res) => {
@@ -48,11 +48,10 @@ logoutAll = (req, res) => {
 };
 
 getAuth = (req, res) => {
-    res.sendFile(path.join(__dirname, '../../views/auth.html'))
+    res.sendFile(path.join(__dirname, '../../views/login.html'))
 };
 
 getChat = (req, res) => {
-    console.log('2 ' + req.session.userName);
     res.cookie('query', req.session.token);
     res.render('./chat.ejs', {userName: req.session.userName});
 };
@@ -114,7 +113,6 @@ saveUser = (req, res) => {
     user.tokens = user.tokens.concat({token});
     req.session.userName = user.name;
     req.session.token = token;
-    console.log('1 ' + req.session.userName);
     user.save();
     return res.status(200).redirect(`/chat`);
 };

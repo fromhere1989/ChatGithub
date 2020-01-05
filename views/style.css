@@ -1,3 +1,5 @@
+@import url("./normalize.css");
+
 * {
 	padding: 0;
 	margin: 0;
@@ -5,8 +7,110 @@
 	}
 
 body {
+	position: relative;
   font-family: 'PT Serif', serif;
   color: white;
+}
+
+::placeholder {
+	color: white;
+}
+
+textarea {
+	resize: none;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input, label {
+	display: block;
+}
+
+label {
+	margin-top: 10px;
+	font-size: 13px;
+}
+
+.login {
+	width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0);
+  z-index: 99;
+}
+
+.login__box {
+	background-color: rgba(0, 0, 0, 0.4);
+	width: 47%;
+	min-width: 200px;
+	height: 50%;
+	display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+	border-radius: 10px;
+}
+
+.login__form {
+	width: 100%;
+	padding: 3% 5% 3% 5%;
+	display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.left:hover {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.right:hover {
+	background-color: rgba(0, 0, 0, 0);
+}
+
+.login__form-input {
+	color: white;
+	background-color: rgba(0, 0, 0, 0);
+	border-bottom: 1px solid white;
+}
+
+.login__form-password-box {
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.login__form-button {
+	width: 100px;
+	height: 33px;
+	color: white;
+	background-color: #5AB9EA;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.auth__form-button {
+	width: 100px;
+	height: 33px;
+	color: white;
+	background-color: #f76c6c;
+	border-radius: 10px;
+	cursor: pointer;
+}
+
+.line {
+	margin-top: 3%;
+	width: 1px;
+	height: 90%;
+	border-right: 1px solid white;
 }
 
 .main {
@@ -54,6 +158,7 @@ body {
 }
 
 .user {
+	height: 19%;
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
 }
@@ -124,9 +229,6 @@ body {
   background-color: rgba(0, 0, 0, 0);
   font-size: 17px;
   color: inherit;
-}
-textarea:focus {
-  outline: none;
 }
 
 .buttonBox {
