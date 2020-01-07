@@ -1,0 +1,88 @@
+.login__box-mobile {
+  background-color: rgba(0, 0, 0, 0.4);
+  width: 47%;
+  height: auto;
+  min-width: 200px;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  border-radius: 10px;
+}
+
+@media screen and (min-width: 931px) {
+  .login__box-mobile {
+    display: none;
+  }
+}
+
+@media screen and (max-height: 540px) {
+  .login__box-mobile {
+    height: 70%;
+  }
+}
+
+.bookmark__box {
+  margin-top: 4%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.bookmark__SignIn {
+  padding-right: 8px;
+  border-right: 1px solid white;
+  border-bottom: 1px solid rgba(250, 250, 250, 1);
+  cursor: pointer;
+}
+
+.bookmark__SignIn:hover {
+  color: rgba(250, 250, 250, 1);
+  border-bottom: 1px solid rgba(250, 250, 250, 1);
+}
+
+.bookmark__SignUp {
+  color: rgba(250, 250, 250, 1);
+  padding-left: 8px;
+  border-bottom: 1px solid rgba(250, 250, 250, 1);
+  cursor: pointer;
+}
+
+.bookmark__SignUp:hover {
+  color: rgba(250, 250, 250, 1);
+  border-bottom: 1px solid rgba(250, 250, 250, 1);
+}
+
+.clicked {
+  color: rgba(250, 250, 250, 0.7);
+  border-bottom: 1px solid rgba(250, 250, 250, 0.7);
+}
+
+.login__form-signIn {
+  height: 70%;
+  margin-top: 80px;
+  margin-bottom: 4%;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+@media screen and (max-height: 800px) {
+  .login__form-signIn {
+    margin-top: 13%;
+  }
+}
+
+.login__form-signUp {
+  height: 80%;
+  margin-top: 70px;
+  margin-bottom: 3%;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0);
+  display: none;
+}
+
+@media screen and (max-height: 800px) {
+  .login__form-signUp {
+    margin-top: 10%;
+  }
+}

@@ -113,8 +113,9 @@ saveUser = (req, res) => {
     user.tokens = user.tokens.concat({token});
     req.session.userName = user.name;
     req.session.token = token;
-    user.save();
-    return res.status(200).redirect(`/chat`);
+    user.save()
+        .then(() => res.status(200).redirect(`/chat`))
+        .catch(logError);
 };
 
 module.exports = {

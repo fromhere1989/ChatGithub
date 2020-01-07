@@ -1,7 +1,6 @@
-Hellow, here I'm learning how to work with express-session.
+Hellow, here I'm learning how create chat.
+
 
 Next steps:
-- Add logout logic;
-- Add a 'phone book';
+- Add a 'phone book', where you can find someone to chat with;
 - Add chatrooms logic;
-- Add save logic for chatrooms(saving massage history for login user for every chatroom);
